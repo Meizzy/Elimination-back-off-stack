@@ -1,3 +1,10 @@
+>Assignment for Architecture for Parallel Computer Systems course @LETI university 2022/23 academic session
+### Contributors
+**Yaseer Buruji Ibrahim** - ibyaseer@mail.ru
+
+[Buruji Yaseer](https://github.com/Meizzy)
+
+# Overview
 Elimination-backoff stack is an unbounded lock-free LIFO
 linked list, that eliminates concurrent pairs of pushes
 and pops with exchanges.  It uses compare-and-set (CAS)
@@ -6,11 +13,6 @@ obstruction freedom. In order to support even greater
 concurrency, in case a push/pop fails, it tries to
 pair it with another pop/push to eliminate the operation
 through exchange of values.
-
-> **Course**: [Concurrent Data Structures], Monsoon 2020\
-> **Taught by**: Prof. Govindarajulu Regeti
-
-[Concurrent Data Structures]: https://github.com/iiithf/concurrent-data-structures
 
 ```java
 push():
@@ -63,40 +65,3 @@ Exchanger.exchange():
 6a. If slot is BUSY (has 2nd value):
 6b. Retry 2.
 ```
-
-```bash
-## OUTPUT
-Starting 10 threads with sequential stack
-4: failed push
-2: failed pop
-3: failed pop
-0: failed pop
-5: failed pop
-1: failed pop
-0: popped 346/1000 values
-1: popped 403/1000 values
-2: popped 1/1000 values
-2: has duplicate value 9881
-3: popped 6/1000 values
-3: has duplicate value 9654
-3: has duplicate value 9652
-4: popped 0/1000 values
-5: popped 6/1000 values
-5: has duplicate value 9359
-7: has duplicate value 9247
-Was LIFO? false
-
-Starting 10 threads with elimination backoff stack
-Was LIFO? true
-```
-
-See [EliminationBackoffStack.java] for code, [Main.java] for test, and [repl.it] for output.
-
-[EliminationBackoffStack.java]: https://repl.it/@wolfram77/elimination-backoff-stack#EliminationBackoffStack.java
-[Main.java]: https://repl.it/@wolfram77/elimination-backoff-stack#Main.java
-[repl.it]: https://elimination-backoff-stack.wolfram77.repl.run
-
-
-### references
-
-- [The Art of Multiprocessor Programming :: Maurice Herlihy, Nir Shavit](https://dl.acm.org/doi/book/10.5555/2385452)
